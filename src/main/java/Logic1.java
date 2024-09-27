@@ -165,16 +165,9 @@ public class Logic1
     nearTen(17) --> false
     nearTen(19) --> true */
     public boolean nearTen(int num) {
-        if ((num+1) % 10 == 0 || (num-1) % 10 == 0){
-            return true;
-        }
-        else if ((num+2) % 10 == 0 || (num-2) % 10 == 0){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return num % 10 <= 2 || num % 10 >= 8;
     }
+
 
 
     /*Given 2 ints, a and b, return their sum.
@@ -186,7 +179,7 @@ public class Logic1
     sortaSum(9, 4) --> 20
     sortaSum(10, 11) --> 21*/
     public int sortaSum(int a, int b) {
-        if (a+b >= 10 || a+b <= 19){
+        if (a+b >= 10 && a+b <= 19){
             return 20;
         }
         else{
@@ -205,12 +198,13 @@ public class Logic1
     in1To10(11, false) --> false
     in1To10(11, true) --> true */
     public boolean in1To10(int n, boolean outsideMode) {
-        if (n >= 1 && n <= 10 && !outsideMode)
-            return true;
-        else if (n > 10 && !outsideMode)
-            return false;
-        else return n > 10 && outsideMode;
+        if (outsideMode) {
+            return n <= 1 || n >= 10;
+        } else {
+            return n >= 1 && n <= 10;
+        }
     }
+
 
 
     /*Given 2 ints, a and b, return their sum. However, "teen" values in the range
@@ -365,6 +359,8 @@ public class Logic1
             return 20;
         if (a== b || a==c || b==c)
             return 10;
+        else
+            return 0;
     }
 
 
@@ -402,20 +398,15 @@ public class Logic1
     caughtSpeeding(65, false) --> 1
     caughtSpeeding(65, true) --> 0	*/
     public int caughtSpeeding(int speed, boolean isBirthday) {
-        if (speed<=60)
+        int limit = isBirthday ? 5 : 0;
+        if (speed <= 60 + limit)
             return 0;
-        if (isBirthday && speed > 65)
-            return 1;
-        if (isBirthday && speed > 86)
-            return 2;
-        if (speed > 80)
-            return 2;
-        if (speed > 60)
+        else if (speed <= 80 + limit)
             return 1;
         else
-            return 0;
-
+            return 2;
     }
+
 
 
     /*
@@ -474,12 +465,12 @@ public class Logic1
     sodaParty(50, false) --> true
     sodaParty(70, true) --> true */
     public boolean sodaParty(int sodas, boolean isWeekend) {
-        if (isWeekend && sodas >= 40)
-            return true;
-        if (sodas > 40 || sodas < 60)
-            return true;
-        else
-            return false;
+        if (isWeekend) {
+            return sodas >= 40;
+        } else {
+            return sodas >= 40 && sodas <= 60;
+        }
     }
+
 
 }
