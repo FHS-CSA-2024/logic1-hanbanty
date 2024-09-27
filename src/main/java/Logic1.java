@@ -311,13 +311,15 @@ public class Logic1
     teaParty(3, 8) --> 0
     teaParty(20, 6) --> 2 */
     public int teaParty(int tea, int candy) {
-        if (tea*2<=candy || candy*2<=tea)
-            return 2;
-        if (tea >= 5 && candy >= 5)
+        if (tea >= 5 && candy >= 5) {
+            if (tea >= 2 * candy || candy >= 2 * tea) {
+                return 2;
+            }
             return 1;
-        else
-            return 0;
+        }
+        return 0;
     }
+
 
 
     /*You have a red lottery ticket showing ints a, b, and c, each of which is 0, 1, or 2.
@@ -331,16 +333,18 @@ public class Logic1
     redTicket(2, 2, 1) --> 0
     redTicket(0, 0, 0) --> 5 */
     public int redTicket(int a, int b, int c) {
-        if (a ==2 && b ==2 && c ==2)
+        if (a == 2 && b == 2 && c == 2) {
             return 10;
-        if (a==b && a==c)
+        }
+        if (a == b && b == c) {
             return 5;
-        if (a!=b && a!=c)
+        }
+        if (a != b && a != c) {
             return 1;
-        else
-            return 0;
-
+        }
+        return 0;
     }
+
 
 
     /*You have a green lottery ticket, with ints a, b, and c on it.
@@ -353,15 +357,15 @@ public class Logic1
     greenTicket(2, 2, 2) --> 20
     greenTicket(1, 1, 2) --> 10 */
     public int greenTicket(int a, int b, int c) {
-        if (a!= b && a!=c && b!=c)
-            return 0;
-        if (a==b && a==c)
+        if (a != b && b != c && a != c) {
             return 20;
-        if (a== b || a==c || b==c)
+        }
+        if (a == b || b == c || a == c) {
             return 10;
-        else
-            return 0;
+        }
+        return 0;
     }
+
 
 
     /*
